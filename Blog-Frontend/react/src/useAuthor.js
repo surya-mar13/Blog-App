@@ -15,7 +15,7 @@ export const useAuth = create(
         try {
           set({ loading: true, error: null });
           const res = await axios.post(
-            "http://localhost:4000/common-api/login",
+            "https://backend-2-jc5u.onrender.com/common-api/login",
             userCredObj,
             { withCredentials: true }
           );
@@ -50,7 +50,7 @@ export const useAuth = create(
         }
 
         try {
-          const res = await axios.get("http://localhost:4000/common-api/check-auth", {
+          const res = await axios.get("https://backend-2-jc5u.onrender.com/common-api/check-auth", {
             withCredentials: true,
           });
 
@@ -87,7 +87,7 @@ export const useAuth = create(
       logout: async () => {
         try {
           set({ loading: true, error: null });
-          await axios.get("http://localhost:4000/common-api/logout", {
+          await axios.get("https://backend-2-jc5u.onrender.com/common-api/logout", {
             withCredentials: true,
           });
         } catch (err) {

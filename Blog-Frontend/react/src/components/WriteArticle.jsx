@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useAuth } from "../useAuthor";
 import toast from "react-hot-toast";
 
 export default function WriteArticle() {
-	const currentUser = useAuth((state) => state.currentUser);
+	const currentUser = JSON.parse(localStorage.getItem("user") || "null");
 	const [title, setTitle] = useState("");
 	const [category, setCategory] = useState("");
 	const [content, setContent] = useState("");
