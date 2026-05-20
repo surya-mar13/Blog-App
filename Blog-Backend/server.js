@@ -16,7 +16,7 @@ const app=exp()
 app.use(exp.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174'],
+    origin: ['http://localhost:5173', 'http://localhost:5174','https://blog-application-beryl.vercel.app/'],
     credentials: true
 }))
 //connect APIs
