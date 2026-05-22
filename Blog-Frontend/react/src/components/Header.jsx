@@ -7,7 +7,7 @@ function Header() {
 
   const onLogout = async () => {
     try {
-      await axios.get("http://localhost:4000/common-api/logout", { withCredentials: true });
+      await axios.get("https://backend-2-jc5u.onrender.com/common-api/logout", { withCredentials: true });
     } catch {
       // local cleanup is enough to logout from UI state
     }

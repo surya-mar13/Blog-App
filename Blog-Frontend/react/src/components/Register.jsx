@@ -38,7 +38,7 @@ function Register() {
     formData.append("image", imageFile);
 
     const res = await axios.post(
-      "http://localhost:4000/common-api/upload-image",
+      "https://backend-2-jc5u.onrender.com/common-api/upload-image",
       formData,
       { withCredentials: true }
     );
@@ -58,9 +58,9 @@ function Register() {
       }
 
       if (role === "user") {
-        await axios.post("http://localhost:4000/user-api/users", user);
+        await axios.post("https://backend-2-jc5u.onrender.com/user-api/users", user);
       } else {
-        await axios.post("http://localhost:4000/author-api/register", user);
+        await axios.post("https://backend-2-jc5u.onrender.com/author-api/register", user);
       }
 
       console.log("Registration successful");

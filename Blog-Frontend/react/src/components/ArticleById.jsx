@@ -19,7 +19,7 @@ function ArticleById() {
   useEffect(() => {
     const loadArticle = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/common-api/article/${articleId}`, {
+        const res = await axios.get(`https://backend-2-jc5u.onrender.com/common-api/article/${articleId}`, {
           withCredentials: true,
         });
         setArticle(res.data?.payload || null);
@@ -54,7 +54,7 @@ function ArticleById() {
     setCommentError("");
     try {
       const res = await axios.post(
-        `http://localhost:4000/user-api/comment/${articleId}`,
+        `https://backend-2-jc5u.onrender.com/user-api/comment/${articleId}`,
         {
           userId: user._id,
           comment: commentText,

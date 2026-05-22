@@ -16,7 +16,7 @@ function AuthorDashboard() {
   const loadAuthorArticles = async () => {
     if (!authorId) return;
     try {
-      const res = await axios.get(`http://localhost:4000/author-api/articles/${authorId}`);
+      const res = await axios.get(`https://backend-2-jc5u.onrender.com/author-api/articles/${authorId}`);
       setArticles(res.data?.payload || []);
     } catch {
       setArticles([]);
@@ -39,7 +39,7 @@ function AuthorDashboard() {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:4000/author-api/article", {
+      await axios.post("https://backend-2-jc5u.onrender.com/author-api/article", {
         author: authorId,
         title,
         category,

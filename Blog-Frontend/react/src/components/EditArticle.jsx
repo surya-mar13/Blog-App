@@ -19,7 +19,7 @@ function EditArticle() {
   useEffect(() => {
     const loadArticle = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/common-api/article/${articleId}`, {
+        const res = await axios.get(`https://backend-2-jc5u.onrender.com/common-api/article/${articleId}`, {
           withCredentials: true,
         });
         const article = res.data?.payload;
@@ -44,7 +44,7 @@ function EditArticle() {
 
     try {
       await axios.put(
-        `http://localhost:4000/author-api/article/${articleId}`,
+        `https://backend-2-jc5u.onrender.com/author-api/article/${articleId}`,
         {
           author: user?._id,
           title,

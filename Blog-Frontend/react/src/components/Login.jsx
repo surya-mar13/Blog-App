@@ -17,7 +17,7 @@ function Login() {
     setError("");
     try {
       const res = await axios.post(
-        "http://localhost:4000/common-api/login",
+        "https://backend-2-jc5u.onrender.com/common-api/login",
         { email, password },
         { withCredentials: true }
       );

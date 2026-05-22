@@ -11,7 +11,7 @@ function Articles() {
   useEffect(() => {
     const loadArticles = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/user-api/articles", { withCredentials: true });
+        const res = await axios.get("https://backend-2-jc5u.onrender.com/user-api/articles", { withCredentials: true });
         setArticles(res.data?.payload || []);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch articles");

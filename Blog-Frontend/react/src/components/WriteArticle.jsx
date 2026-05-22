@@ -50,7 +50,7 @@ export default function WriteArticle() {
 			console.log("Submitting article:", articleData);
 
 			const res = await axios.post(
-				"http://localhost:4000/author-api/article",
+				"https://backend-2-jc5u.onrender.com/author-api/article",
 				articleData,
 				{ withCredentials: true }
 			);
