@@ -11,7 +11,7 @@ import cors from 'cors'
 config()//process.env
 
 const app=exp()
-const frontendOrigin = 'https://blog-application-beryl.vercel.app'
+const frontendOrigin = 'https://blog-application-8e1edai34-surya-mar13s-projects.vercel.app'
 
 //add body parser middleware
 app.use(exp.json())
