@@ -11,31 +11,15 @@ import cors from 'cors'
 config()//process.env
 
 const app=exp()
-const frontendOrigin = 'https://blog-application-8e1edai34-surya-mar13s-projects.vercel.app'
+const frontendOrigin = 'https://blog-application-beryl.vercel.app'
 const serverPort = process.env.PORT || process.env.port || 4000
-const allowedOrigins = new Set([
-    'http://localhost:5173',
-    'http://localhost:5174',
-    frontendOrigin,
-    'https://blog-application-beryl.vercel.app',
-    ...(process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim()).filter(Boolean) : [])
-])
+
 
 //add body parser middleware
 app.use(exp.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: (origin, callback) => {
-        console.log('CORS origin check:', origin)
-        if (!origin || allowedOrigins.has(origin) || /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
-            console.log('CORS allow:', origin)
-            callback(null, true)
-            return
-        }
-
-        console.log('CORS deny:', origin)
-        callback(new Error('Not allowed by CORS'))
-    },
+    origin: frontendOrigin,
     credentials: true
 }))
 //connect APIs
