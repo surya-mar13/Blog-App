@@ -12,12 +12,25 @@ config()//process.env
 
 const app=exp()
 const frontendOrigin = 'https://blog-application-8e1edai34-surya-mar13s-projects.vercel.app'
+const allowedOrigins = new Set([
+    'http://localhost:5173',
+    'http://localhost:5174',
+    frontendOrigin,
+    ...(process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim()).filter(Boolean) : [])
+])
 
 //add body parser middleware
 app.use(exp.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174', frontendOrigin],
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.has(origin) || /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
+            callback(null, true)
+            return
+        }
+
+        callback(new Error('Not allowed by CORS'))
+    },
     credentials: true
 }))
 //connect APIs

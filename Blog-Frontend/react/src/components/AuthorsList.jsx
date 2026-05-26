@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 function AuthorsList() {
   const [authors, setAuthors] = useState([]);
@@ -8,7 +9,7 @@ function AuthorsList() {
 
   const loadAuthors = async () => {
     try {
-      const res = await axios.get("https://backend-2-jc5u.onrender.com/admin-api/authors", { withCredentials: true });
+      const res = await axios.get(`${API_BASE_URL}/admin-api/authors`, { withCredentials: true });
       setAuthors(res.data?.payload || []);
     } catch (err) {
       setError(err.response?.data?.message || "Failed to fetch authors");
@@ -23,8 +24,8 @@ function AuthorsList() {
 
   const toggleStatus = async (authorId, isActive) => {
     const url = isActive
-      ? "https://backend-2-jc5u.onrender.com/admin-api/blockUsers"
-      : "https://backend-2-jc5u.onrender.com/admin-api/unblockUsers";
+      ? `${API_BASE_URL}/admin-api/blockUsers`
+      : `${API_BASE_URL}/admin-api/unblockUsers`;
 
     try {
       await axios.put(url, { userId: authorId }, { withCredentials: true });

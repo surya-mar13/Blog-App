@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 function AuthorDashboard() {
   const [title, setTitle] = useState("");
@@ -16,7 +17,7 @@ function AuthorDashboard() {
   const loadAuthorArticles = async () => {
     if (!authorId) return;
     try {
-      const res = await axios.get(`https://backend-2-jc5u.onrender.com/author-api/articles/${authorId}`);
+      const res = await axios.get(`${API_BASE_URL}/author-api/articles/${authorId}`);
       setArticles(res.data?.payload || []);
     } catch {
       setArticles([]);
@@ -39,7 +40,7 @@ function AuthorDashboard() {
 
     setLoading(true);
     try {
-      await axios.post("https://backend-2-jc5u.onrender.com/author-api/article", {
+      await axios.post(`${API_BASE_URL}/author-api/article`, {
         author: authorId,
         title,
         category,

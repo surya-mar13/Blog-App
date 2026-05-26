@@ -1,6 +1,7 @@
   import { create } from "zustand";
   import { createJSONStorage, persist } from "zustand/middleware";
   import axios from "axios";
+  import { API_BASE_URL } from "./apiConfig";
 
   export const useAuth = create(
     persist(
@@ -15,7 +16,7 @@
           try {
             set({ loading: true, error: null });
             const res = await axios.post(
-              "https://backend-2-jc5u.onrender.com/common-api/login",
+              `${API_BASE_URL}/common-api/login`,
               userCredObj,
               { withCredentials: true }
             );
@@ -50,7 +51,7 @@
           }
 
           try {
-            const res = await axios.get("https://backend-2-jc5u.onrender.com/common-api/check-auth", {
+            const res = await axios.get(`${API_BASE_URL}/common-api/check-auth`, {
               withCredentials: true,
             });
 
@@ -87,7 +88,7 @@
         logout: async () => {
           try {
             set({ loading: true, error: null });
-            await axios.get("https://backend-2-jc5u.onrender.com/common-api/logout", {
+            await axios.get(`${API_BASE_URL}/common-api/logout`, {
               withCredentials: true,
             });
           } catch (err) {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../apiConfig";
 
 function Login() {
 
@@ -17,7 +18,7 @@ function Login() {
     setError("");
     try {
       const res = await axios.post(
-        "https://backend-2-jc5u.onrender.com/common-api/login",
+        `${API_BASE_URL}/common-api/login`,
         { email, password },
         { withCredentials: true }
       );

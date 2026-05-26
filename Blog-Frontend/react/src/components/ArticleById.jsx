@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../apiConfig";
 
 function ArticleById() {
   const [article, setArticle] = useState(null);
@@ -19,7 +20,7 @@ function ArticleById() {
   useEffect(() => {
     const loadArticle = async () => {
       try {
-        const res = await axios.get(`https://backend-2-jc5u.onrender.com/common-api/article/${articleId}`, {
+        const res = await axios.get(`${API_BASE_URL}/common-api/article/${articleId}`, {
           withCredentials: true,
         });
         setArticle(res.data?.payload || null);
@@ -54,7 +55,7 @@ function ArticleById() {
     setCommentError("");
     try {
       const res = await axios.post(
-        `https://backend-2-jc5u.onrender.com/user-api/comment/${articleId}`,
+        `${API_BASE_URL}/user-api/comment/${articleId}`,
         {
           userId: user._id,
           comment: commentText,

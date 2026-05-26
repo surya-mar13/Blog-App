@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../apiConfig";
 
 function Header() {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ function Header() {
 
   const onLogout = async () => {
     try {
-      await axios.get("https://backend-2-jc5u.onrender.com/common-api/logout", { withCredentials: true });
+      await axios.get(`${API_BASE_URL}/common-api/logout`, { withCredentials: true });
     } catch {
       // local cleanup is enough to logout from UI state
     }

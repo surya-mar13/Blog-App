@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import UserRoleGuard from "./UserRoleGuard";
+import { API_BASE_URL } from "../apiConfig";
 
 function EditArticle() {
   const [title, setTitle] = useState("");
@@ -19,7 +20,7 @@ function EditArticle() {
   useEffect(() => {
     const loadArticle = async () => {
       try {
-        const res = await axios.get(`https://backend-2-jc5u.onrender.com/common-api/article/${articleId}`, {
+        const res = await axios.get(`${API_BASE_URL}/common-api/article/${articleId}`, {
           withCredentials: true,
         });
         const article = res.data?.payload;
@@ -44,7 +45,7 @@ function EditArticle() {
 
     try {
       await axios.put(
-        `https://backend-2-jc5u.onrender.com/author-api/article/${articleId}`,
+        `${API_BASE_URL}/author-api/article/${articleId}`,
         {
           author: user?._id,
           title,

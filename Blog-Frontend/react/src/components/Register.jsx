@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../apiConfig";
 
 function Register() {
   const { register, handleSubmit, reset } = useForm({
@@ -38,7 +39,7 @@ function Register() {
     formData.append("image", imageFile);
 
     const res = await axios.post(
-      "https://backend-2-jc5u.onrender.com/common-api/upload-image",
+      `${API_BASE_URL}/common-api/upload-image`,
       formData,
       { withCredentials: true }
     );
@@ -58,9 +59,9 @@ function Register() {
       }
 
       if (role === "user") {
-        await axios.post("https://backend-2-jc5u.onrender.com/user-api/users", user);
+        await axios.post(`${API_BASE_URL}/user-api/users`, user);
       } else {
-        await axios.post("https://backend-2-jc5u.onrender.com/author-api/register", user);
+        await axios.post(`${API_BASE_URL}/author-api/register`, user);
       }
 
       console.log("Registration successful");
@@ -75,7 +76,7 @@ function Register() {
     } catch (err) {
       console.error("Registration error:", err);
       if (!err.response) {
-        const errorMessage = "Network error: backend is not reachable. Check https://backend-2-jc5u.onrender.com.";
+        const errorMessage = `Network error: backend is not reachable. Check ${API_BASE_URL}.`;
         setError(errorMessage);
         toast.error(errorMessage);
       } else {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../apiConfig";
 
 function AuthorArticles() {
   const [articles, setArticles] = useState([]);
@@ -19,7 +20,7 @@ function AuthorArticles() {
       }
 
       try {
-        const res = await axios.get(`https://backend-2-jc5u.onrender.com/author-api/articles/${user._id}`);
+        const res = await axios.get(`${API_BASE_URL}/author-api/articles/${user._id}`);
         setArticles(res.data?.payload || []);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch author articles");

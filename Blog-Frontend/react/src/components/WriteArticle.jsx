@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../apiConfig";
 
 export default function WriteArticle() {
 	const currentUser = JSON.parse(localStorage.getItem("user") || "null");
@@ -50,7 +51,7 @@ export default function WriteArticle() {
 			console.log("Submitting article:", articleData);
 
 			const res = await axios.post(
-				"https://backend-2-jc5u.onrender.com/author-api/article",
+				`${API_BASE_URL}/author-api/article`,
 				articleData,
 				{ withCredentials: true }
 			);

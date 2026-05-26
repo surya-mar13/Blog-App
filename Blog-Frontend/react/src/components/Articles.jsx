@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../apiConfig";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -11,7 +12,7 @@ function Articles() {
   useEffect(() => {
     const loadArticles = async () => {
       try {
-        const res = await axios.get("https://backend-2-jc5u.onrender.com/user-api/articles", { withCredentials: true });
+        const res = await axios.get(`${API_BASE_URL}/user-api/articles`, { withCredentials: true });
         setArticles(res.data?.payload || []);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch articles");
