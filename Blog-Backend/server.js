@@ -12,6 +12,7 @@ config()//process.env
 
 const app=exp()
 const frontendOrigin = 'https://blog-application-8e1edai34-surya-mar13s-projects.vercel.app'
+const serverPort = process.env.PORT || process.env.port || 4000
 const allowedOrigins = new Set([
     'http://localhost:5173',
     'http://localhost:5174',
@@ -61,7 +62,7 @@ const connectDB=async()=>{
         await connect(process.env.DB_URL)
         console.log("DB connection success")
         //Start http server
-        app.listen(process.env.port,()=>console.log(`server started on port ${process.env.port}`))
+        app.listen(serverPort,()=>console.log(`server started on port ${serverPort}`))
     }
     catch(err){
         console.log("there is an error in connecting"+err)
