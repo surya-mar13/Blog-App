@@ -11,12 +11,13 @@ import cors from 'cors'
 config()//process.env
 
 const app=exp()
+const frontendOrigin = 'https://blog-application-beryl.vercel.app'
 
 //add body parser middleware
 app.use(exp.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174','https://blog-application-beryl.vercel.app/'],
+    origin: ['http://localhost:5173', 'http://localhost:5174', frontendOrigin],
     credentials: true
 }))
 //connect APIs

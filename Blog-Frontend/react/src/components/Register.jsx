@@ -75,7 +75,7 @@ function Register() {
     } catch (err) {
       console.error("Registration error:", err);
       if (!err.response) {
-        const errorMessage = "Network error: backend is not reachable. Start backend server on http://localhost:4000.";
+        const errorMessage = "Network error: backend is not reachable. Check https://backend-2-jc5u.onrender.com.";
         setError(errorMessage);
         toast.error(errorMessage);
       } else {
